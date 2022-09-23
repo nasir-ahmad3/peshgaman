@@ -1,0 +1,23 @@
+@import url('https://v1.fontapi.ir/css/Sahel');
+body{
+	font-family: Sahel !important;
+    text-align: right !important;
+    display: rtl !important;
+}
+.brand-link {
+    text-align: right;
+}
+.nav.nav-pills.nav-sidebar.flex-column {
+    text-align: right;
+    padding-left: initial;
+    padding-right: 0;
+}
+.col-sm-6{
+    display: flex;
+}
+@media (max-width: 991px){
+    .table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(5),
+    .table > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(5){
+        display: none !important;
+    } 
+}

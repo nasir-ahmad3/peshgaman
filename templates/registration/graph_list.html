@@ -1,0 +1,61 @@
+{% extends 'registration/base.html' %}
+
+{% block title %}اکانت{% endblock %}
+{% block site_title %}لیست گراف ها{% endblock %}
+
+{% block main %}
+	<!-- Main content -->
+    <section class="content">
+      {% if object_list %}
+    	 <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>عنان گراف</th>
+                      {% if request.user.is_superuser %}
+                        <th>حذف گراف</th>
+                      {% endif %}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for graph in object_list %}
+                        <tr>
+                          <td>
+                            {% if request.user.is_superuser %}
+                              <a href="{% url 'account:graph-update' graph.pk %}">{{graph.title}}</a>
+                            {% else %}
+                              {{graph.title}}
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if request.user.is_superuser %}
+                              <a href="{% url 'account:graph-delete' graph.pk %}" class="badge badge-danger" >حذف</a>
+                            {% endif %}
+                          </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      {% else %}
+        <h3>مقاله یی برای  نمایش وجود ندارد</h3>
+      {% endif %}
+    </section>
+    <!-- /.content -->
+{% endblock %}
+
+
+
+
+
+
+

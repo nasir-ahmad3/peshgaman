@@ -1,0 +1,73 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}اکانت{% endblock %}
+{% block site_title %}افزودن  مقالات{% endblock %}
+
+{% block main %}
+  <!-- Main content -->
+    <section class="content">
+      <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title float-right">اضافه کردن مقاله</h3>
+        </div>
+        <!-- /.card-header -->              
+        <form method="post" enctype="multipart/form-data" class="p-3">{% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              {{form.title|as_crispy_field}}
+            </div>
+            <div class="col-md-6">
+              {{form.slug|as_crispy_field}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{form.category|as_crispy_field}}
+            </div>
+            <div class="col-md-6">
+              {{form.Graph|as_crispy_field}}
+              {{form.thumbnail|as_crispy_field}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              {{form.description|as_crispy_field}}
+            </div>
+          </div>
+          {% if  request.user.is_superuser %}
+            <div class="row">
+              <div class="col-md-6">
+                {{form.user|as_crispy_field}}
+              </div>
+              <div class="col-md-6">
+                {{form.status|as_crispy_field}}
+              </div>
+            </div>
+          {% endif %}
+          <div class="row">
+            <div class="col-md-6">
+              {{form.publish|as_crispy_field}}
+            </div>
+            <div class="col-md-6">
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-success">ارسال مقاله</button>
+            {% if request.resolver_match.kwargs.pk and request.user.is_superuser %}
+              <a href="{% url 'account:article-delete' request.resolver_match.kwargs.pk %}" class="btn btn-danger">حذف</a>
+            {% endif %}
+          </div>
+        </form>
+            </div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    </section>
+{% endblock %}

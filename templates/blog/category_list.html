@@ -1,0 +1,15 @@
+{% extends 'blog/list.html' %}
+
+
+{% block page_title %}
+	{{category.title}}
+{% endblock %}
+{% block page_title_2 %}
+	<h1>دسته بندی : {{category.title}}</h1>
+{% endblock %}
+{% block previous_page %}
+	{% url 'blog:category' category.slug page_obj.previous_page_number %}
+{% endblock %}
+{% block next_page %}
+	{% url 'blog:category' category.slug page_obj.next_page_number %}
+{% endblock %}

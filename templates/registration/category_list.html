@@ -1,0 +1,83 @@
+{% extends 'registration/base.html' %}
+
+{% block title %}لیست دسته بندی ها{% endblock %}
+{% block site_title %}لیست دسته بندی ها{% endblock %}
+
+{% block main %}
+	<!-- Main content -->
+    <section class="content">
+      {% if object_list %}
+    	 <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>عنوان دسته بندی </th>
+                      <th>پوزیشن</th>
+                      <th>آدرس دسته بندی </th>
+                      <th>آیا نمایش داده شود؟</th>
+                      {% if request.user.is_superuser %}
+                        <th>حذف دسته بندی</th>
+                      {% endif %}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for category in object_list %}
+                        <tr>
+                          <td>
+                          {% if request.user.is_superuser or  category.status != True %}
+                            <a href="{% url 'account:category-update' category.pk %}">{{category.title}}</a>
+                          {% else %}
+                            {{category.title}}
+                          {% endif %}
+                          </td>
+                          <td>{{category.position}}</td>
+                          <td>
+                            {% if category.status == True %}
+                              <a href="{% url 'blog:category' category.slug %}">نمایش در سایت</a>
+                            {% else %}
+                              <div class="badge badge-danger">
+                                پیش نویس
+                              </div>
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if category.status == True %}
+                              <div class="badge badge-success">بلی</div>
+                            {% else %}
+                              <div class="badge badge-danger">
+                                نخیر
+                              </div>
+                            {%  endif %}
+                          </td>
+                          {% if request.user.is_superuser %}
+                            <td>
+                              <a href="{% url 'account:category-delete' category.pk %}" class="badge badge-danger">حذف</a>
+                            </td>
+                          {% endif %}
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      {% else %}
+        <h3>مقاله یی برای  نمایش وجود ندارد</h3>
+      {% endif %}
+    </section>
+    <!-- /.content -->
+{% endblock %}
+
+
+
+
+
+
+

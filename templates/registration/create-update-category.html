@@ -1,0 +1,56 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}افزودن دسته بندی{% endblock %}
+{% block site_title %}فازودن دسته بندی ها{% endblock %}
+
+{% block main %}
+	<!-- Main content -->
+    <section class="content">
+	    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+				<div class="card-header">
+					<h3 class="card-title float-right">افزودن دسته بندی</h3>
+				</div>
+				<!-- /.card-header -->              
+				<form method="post" enctype="multipart/form-data" class="p-3">{% csrf_token %}
+					<div class="row">
+						<div class="col-md-6">
+							{{form.title|as_crispy_field}}
+						</div>
+						<div class="col-md-6">
+							{{form.slug|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							{{form.position|as_crispy_field}}
+						</div>
+						{% if request.user.is_superuser %}
+							<div class="col-md-6">
+								{{form.status|as_crispy_field}}
+							</div>
+						{% endif %}
+					</div>
+		            <div class="card-footer">
+		              <button type="submit" class="btn btn-success">ارسال دسته بندی</button>
+		            </div>
+				</form>
+            </div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    </section>
+{% endblock %}
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load ratings %}
+{% load base_tags %}
+{% load humanize %}
+
+{% block title %}{% block page_title %}
+{% endblock %}{% endblock %}
+{% block main %}
+
+<!-- start the header section -->
+	<header>
+		<h1 class="title">پیشگامان</h1>
+		<p class="text">اینجا جای اونایی است که به زمان ارزش میدهند!</p>
+		<p class="text">به جمع ما خوش آمدید (:</p>
+	</header>
+<!-- end the header section -->
+<!-- start the main section -->
+	<div class="main-body">
+		<div class="articles-wrapper">
+			{% block page_title_2 %}{% endblock %}
+			{% for article in object_list %}
+				<div class="article-wrapper">
+					<div class="left">
+						<div class="img" style="background-image: url({{article.thumbnail.url}});"></div>
+					</div>
+					<div class="right">
+						<a href="{% url 'blog:detail' article.slug %}">
+							<h1 class="title">{{article.title}}{% ratings article %}</h1>
+							<p class="description">
+								{{article.description|striptags|truncatewords:'30'}}
+							</p>
+						</a>
+						<div class="author-description">نویسنده <a href="{% url 'blog:author' article.user %}">{{article.user.get_full_name}}</a> در <p class="time">{{article.publish|naturaltime}}</p></div>
+						<div class="category">
+							{% for cate in article.category.Active %}
+								<a href="{% url 'blog:category' cate.slug %}">#{{cate.title}}</a>
+							{% endfor %}	
+						</div>		
+						<div class="hits" style="color: #555; margin-right:5px;">
+							بازدید ها :{{article.hits.count}}
+						</div>	
+					</div>
+				</div>
+			{% empty %}
+				<div>متاسفانه محتویاتی برای نمایش وجود ندارد</div>
+			{% endfor %}
+			{% if is_paginated %}
+				<div class="pagination">
+					{% if page_obj.has_previous %}
+						<a href="{% block previous_page %}{% endblock %}">پوست های جدید</a>
+					{% endif %}
+					{% if page_obj.has_next %}
+						<a href="{% block next_page %}{% endblock %}">پوست های قدیمی</a>
+					{% endif %}
+				</div>		
+			{% endif %}
+		</div>
+		{% last_month_view  request %}
+	</div>
+</div>
+	<!-- end the main section -->
+{% endblock %}

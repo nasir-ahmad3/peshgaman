@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'registration/login/style.css' %}">
+	<title>ورود</title>
+</head>
+<body>
+	<div class="error_2"></div>
+	<div class="form-wrapper" style="height: 600px;">
+		<form class="wrapper" method="post">{% csrf_token %}
+			{% if form.non_field_errors %}
+				{% for error in form.non_field_errors %}
+					<div class="error" style="color:#fff;">{{error}}</div>
+				{% endfor %}
+			{% endif %}
+			<h1 class="title">ورود</h1>
+			<div class="name" id="item">
+			    <div class="name">نام کاربری</div>
+				{{form.username}}
+				{% if form.username.error %}
+					{% for error in form.username.error %}
+						<div class="error_2">{{ error }}</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div class="email" id="item">
+				<div class="name">ایمیل</div>
+				{{form.email}}
+				{% if form.email.error %}
+					{% for error in form.email.error %}
+						<div class="error_2">{{ error }}</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div class="password" id="item">
+				<div class="name">گذرواژه جدید</div>
+				{{form.password1}}
+				{% if form.password1.error %}
+					{% for error in form.password1.error %}
+						<div class="error_2">{{ error }}</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div class="password" id="item">
+				<div class="name">تایید گذرواژه جدید</div>
+				{{form.password2}}
+				{% if form.password2.error %}
+					{% for error in form.password2.error %}
+						<div class="error_2">{{ error }}</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div class="des">
+				<p><a href="{% url 'login' %}">اکانت دارید؟</a></p>
+			</div>
+			<button type="submit">ورود</button>
+		</form>
+	</div>
+	<script type="text/javascript" src="{% static 'registration/login/js.js' %}"></script>
+</body>
+</html>

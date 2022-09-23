@@ -1,0 +1,153 @@
+@font-face{
+	font-family: tanha;
+	src: url(Tanha.ttf);
+}
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body{
+	font-family: tanha;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #1c1c1c;
+	text-align: right;
+	direction: rtl;
+}
+div.form-wrapper{
+	width: 328px;
+	height: 430px;
+	background-color: #000;
+	position: relative;
+	overflow: hidden;
+	border-radius: 5px;
+}
+div.form-wrapper:before{
+	content: '';
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+	transform-origin: bottom right;
+	animation: animate 6s linear infinite;
+}
+div.form-wrapper:after{
+	content: '';
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+	transform-origin: bottom right;
+	animation: animate 6s linear infinite;
+	animation-delay: -3s;
+}
+@keyframes animate{
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+form.wrapper{
+	width: 99.5%;
+	height: 99.5%;
+	background-color: #28292d;
+	color: #45f3ff;
+	z-index: 10;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 5px;
+}
+form.wrapper > h1{
+	font-size: 40px;
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+}
+form.wrapper > div{
+	width: 80%;
+	height: 75px;
+	margin: 10px auto;
+	text-align: right;
+	color: #979797;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-end;
+	cursor: text;
+}
+form.wrapper > div > div{
+	cursor: text;
+	transition: all 0.5s;
+}
+form.wrapper > div.active > div{
+	color: #45f3ff;
+}
+form.wrapper > div > input{
+	width: 100%;
+	height: 1px;
+	border: none;
+	background-color: #45f3ff;
+	outline: none;
+	transition: all 0.5s;
+	border-radius: 5px;
+	text-align: right;
+	font-size: 20px;
+}
+form.wrapper > div.active > input{
+	height: 50px;
+	color: #000;
+}
+div.des{
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+	margin: 0 auto !important;
+    margin-top: -20px !important;
+}
+div.des p a{
+	text-decoration: none;
+	color: #979797;
+}
+form > button{
+	padding: 7px 30px;
+	font-size: 18px;
+	margin: 30px auto;
+	margin-right: 30px;
+	color: #000;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: #45f3ff;
+	border-radius: 5px;
+	line-height: 20px;
+}
+form > button:active{
+	border: none;
+	outline: none;
+}
+.error{
+	display: none !important;
+}
+.error_2{
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #45f3ff;
+	color: #000;
+	width: 100%;
+	padding: 20px;
+}

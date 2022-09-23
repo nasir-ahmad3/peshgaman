@@ -1,0 +1,119 @@
+{% load static %}
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="{% url 'blog:home' %}" target="_blank" class="brand-link">
+    <img src="{% static 'registration/admin_lte/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+         style="opacity: .8">
+    <span class="brand-text font-weight-light">پیشگامان</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <i class="fa fa-user" aria-hidden="true" style="font-size: 30px; color: #fff; margin-right: 12px;"></i>
+      </div>
+      <div class="info">
+        <a href="#" class="d-block">
+          {% if user.get_full_name %}
+            {{user.get_full_name}}
+          {% else %}
+            {{user.username}}
+          {% endif %}
+        </a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        {% if request.user.is_superuser or request.user.is_author %}
+          <li class="nav-item has-treeview menu-open">
+            <a href="{% url 'account:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' or request.resolver_match.url_name == 'article-create' %}active{% endif %}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                مقالات
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'account:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p>لیست مقالات</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'account:article-create' %}" class="nav-link {% if request.resolver_match.url_name == 'article-create' %}active{% endif %}">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>افزودن مقالات</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview ">
+            <a href="{% url 'account:graphـlist' %}" class="nav-link {% if request.resolver_match.url_name == 'graphـlist' or request.resolver_match.url_name == 'graph-create' %}active{% endif %}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                گراف ها
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'account:graphـlist' %}" class="nav-link {% if request.resolver_match.url_name == 'graphـlist' %}active{% endif %}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p>لیست گراف ها</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'account:graph-create' %}" class="nav-link {% if request.resolver_match.url_name == 'graph-create' %}active{% endif %}">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>افزودن گراف ها</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+           <li class="nav-item has-treeview ">
+            <a href="{% url 'account:category-list' %}" class="nav-link {% if request.resolver_match.url_name == 'category-list' or request.resolver_match.url_name == 'category-create' %}active{% endif %}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                دسته بندی  ها
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'account:category-list' %}" class="nav-link {% if request.resolver_match.url_name == 'category-list' %}active{% endif %}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p>لیست دسته بندی ها</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'account:category-create' %}" class="nav-link {% if request.resolver_match.url_name == 'category-create' %}active{% endif %}">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>افزودن دسته بندی ها</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        {% endif %}
+        <li class="nav-item">
+          <a href="{% url 'account:profile' %}" class="nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              پروفایل
+              <span class="right badge badge-danger">جدید</span>
+            </p>
+          </a>
+        </li>
+      </ul>  
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

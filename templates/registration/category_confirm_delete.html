@@ -1,0 +1,33 @@
+{% extends 'registration/base.html' %}
+
+{% block title %}اکانت{% endblock %}
+{% block site_title %}حذف دسته بندی{% endblock %}
+
+{% block main %}
+	<!-- Main content -->
+    <section class="content">
+		<div class="card mx-auto card-danger col-md-8">
+			<div class="card-header">
+				<h3 class="card-title float-right">حذف دسته بندی</h3>
+			</div>
+			<div class="card-body">
+				<form method="post">{% csrf_token %}					
+					<p class="text-center">آیا از خذف دسته بندی  انتخاب شده مطمعن استید؟</p>
+					<div>			
+						<button type="submit" class="btn btn-danger">بلی</button>
+						<a href="{% url 'account:category-list' %}" class="btn btn-primary">نخیر</a>
+					</div>
+				</form>
+			</div>
+        </div>
+    </section>
+    <!-- /.content -->
+{% endblock %}
+
+
+
+
+
+
+
+

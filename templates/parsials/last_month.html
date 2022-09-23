@@ -1,0 +1,61 @@
+{% load static %}
+{% load ratings %}
+<div class="articles-wrapper" style="margin-top:50px;">
+	<h1>مقالات داغ یک ماه اخیر</h1>
+	{% for article in hot_Article %}
+		<div class="article-wrapper">
+			<div class="left">
+				<div class="img" style="background-image: url({{article.thumbnail.url}});"></div>
+			</div>
+			<div class="right">
+				<a href="{% url 'blog:detail' article.slug %}">
+					<h1 class="title">{{article.title}}{% ratings article %}</h1>
+					<p class="description">
+						{{article.description|striptags|truncatewords:'30'}}
+					</p>
+				</a>
+				<div class="author-description">نویسنده <a href="{% url 'blog:author' article.user %}">{{article.user.get_full_name}}</a> در <p class="time">{{article.publish}}</p></div>
+				<div class="category">
+					{% for cate in article.category.Active %}
+						<a href="{% url 'blog:category' cate.slug %}">#{{cate.title}}</a>
+					{% endfor %}	
+				</div>		
+				<div class="hits" style="color: #555; margin-right:5px;">
+					بازدید ها :{{article.hits.count}}
+				</div>	
+			</div>
+		</div>
+	{% empty %}
+			<div>متاسفانه محتویاتی برای نمایش وجود ندارد</div>
+	{% endfor %}
+</div>
+
+<div class="articles-wrapper" style="margin-top:50px;">
+	<h1>مقالات پربازدید یک ماه اخیر</h1>
+	{% for article in last_month_view %}
+		<div class="article-wrapper">
+			<div class="left">
+				<div class="img" style="background-image: url({{article.thumbnail.url}});"></div>
+			</div>
+			<div class="right">
+				<a href="{% url 'blog:detail' article.slug %}">
+					<h1 class="title">{{article.title}}{% ratings article %}</h1>
+					<p class="description">
+						{{article.description|striptags|truncatewords:'30'}}
+					</p>
+				</a>
+				<div class="author-description">نویسنده <a href="{% url 'blog:author' article.user %}">{{article.user.get_full_name}}</a> در <p class="time">{{article.publish}}</p></div>
+				<div class="category">
+					{% for cate in article.category.Active %}
+						<a href="{% url 'blog:category' cate.slug %}">#{{cate.title}}</a>
+					{% endfor %}	
+				</div>		
+				<div class="hits" style="color: #555; margin-right:5px;">
+					بازدید ها :{{article.hits.count}}
+				</div>	
+			</div>
+		</div>
+	{% empty %}
+		<div>متاسفانه محتویاتی برای نمایش وجود ندارد</div>
+	{% endfor %}
+</div>

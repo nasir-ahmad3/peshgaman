@@ -1,0 +1,56 @@
+{% load static %}
+{% load ratings %}
+{% load base_tags %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+		<link rel="stylesheet" href="{% static 'blog/assets/css/searchForm.css' %}">
+		<link rel="stylesheet" href="{% static 'blog/assets/css/main.css' %}">
+
+	<title>{% block title %}پیشگامان{% endblock %}</title>
+</head>
+<body style="font-family: tanha !important;">
+	<!-- start the navigation -->
+	<nav>
+		{% category_navbar %}
+		<div class="right">
+			{% if not request.user.id == None %}
+                <a href="{% url 'account:profile' %}" target="_blank" class="profile">
+                    <div class="img">
+                    	<i class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+                    <span>{{request.user.get_full_name}}</span>
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}">ورود </a>/
+                <a href="{% url 'register' %}">ثبت نام </a>
+            {% endif %}
+		</div>
+	</nav>
+	<!-- end the navigation -->
+	{% block main %}{% endblock %}
+	<!--  start the footer section -->
+	<footer style="display:flex !important">
+		<ul style="display:flex !important">
+			<li class="facebook">
+				<a href="https://www.facebook.com/peshgamanfinance"><i class="fab fa-facebook"></i></a>
+			</li>
+			<li class="youtube">
+				<a href="https://youtube.com/c/Peshgaman"><i class="fab fa-youtube"></i></a>
+			</li>
+			<li class="telegram">
+				<a href="https://t.me/peshgaman_youtube"><i class="fab fa-telegram"></i></a>
+			</li>
+		</ul>
+	</footer>
+	<!--  end the footer section -->
+	<script src="{% static 'blog/assets/js/anime.min.js' %}"></script>
+	<script src="{% static 'blog/assets/js/main.js' %}"></script>
+	<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+</body>
+</html>

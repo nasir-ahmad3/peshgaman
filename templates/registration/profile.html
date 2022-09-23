@@ -1,0 +1,64 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}پروفایل{% endblock %}
+{% block site_title %}پروفایل{% endblock %}
+
+{% block main %}
+  <!-- Main content -->
+    <section class="content">
+      <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title float-right">ویرایش اطلاعات</h3>
+              </div>          
+              <form method="post" enctype="multipart/form-data" class="p-3">{% csrf_token %}
+                <div class="row">
+                  <div class="col-md-6">
+                    {{form.username|as_crispy_field}}
+                  </div>
+                  <div class="col-md-6">
+                    {{form.email|as_crispy_field}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    {{form.first_name|as_crispy_field}}
+                  </div>
+                  <div class="col-md-6">
+                    {{form.last_name|as_crispy_field}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    {{form.is_author|as_crispy_field}}
+                  </div>
+                  <div class="col-md-6">
+                    <a class="btn btn-danger" href="{% url 'password_change' %}">تغیر گذرواژه</a>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-success">ویرایش اطلاعات</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

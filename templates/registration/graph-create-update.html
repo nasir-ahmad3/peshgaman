@@ -1,0 +1,151 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}اکانت{% endblock %}
+{% block site_title %}اضافه کردن گراف{% endblock %}
+
+{% block main %}
+	<!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+				<div class="card-header">
+					<h3 class="card-title float-right">اضافه کردن گراف</h3>
+				</div>
+				<!-- /.card-header -->              
+				<form method="post" enctype="multipart/form-data" class="p-3">{% csrf_token %}
+					<div class="row m-3">
+						<div class="col-md-12">
+							{{form.title|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row m-3">
+						<div class="col-md-4">
+							{{form.graph_name_1|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_number_1|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_image_1|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row m-3">
+						<div class="col-md-4">
+							{{form.graph_name_2|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_number_2|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_image_2|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row m-3">
+						<div class="col-md-4">
+							{{form.graph_name_3|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_number_3|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_image_3|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row m-3">
+						<div class="col-md-4">
+							{{form.graph_name_4|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_number_4|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_image_4|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row m-3">
+						<div class="col-md-4">
+							{{form.graph_name_5|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_number_5|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_image_5|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row m-3">
+						<div class="col-md-4">
+							{{form.graph_name_6|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_number_6|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_image_6|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row m-3">
+						<div class="col-md-4">
+							{{form.graph_name_7|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_number_7|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_image_7|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row m-3">
+						<div class="col-md-4">
+							{{form.graph_name_8|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_number_8|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_image_8|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row m-3">
+						<div class="col-md-4">
+							{{form.graph_name_9|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_number_9|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_image_9|as_crispy_field}}
+						</div>
+					</div>
+					<div class="row m-3">
+						<div class="col-md-4">
+							{{form.graph_name_10|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_number_10|as_crispy_field}}
+						</div>
+						<div class="col-md-4">
+							{{form.graph_image_10|as_crispy_field}}
+						</div>
+					</div>
+		            <div class="card-footer">
+		              <button type="submit" class="btn btn-success">ارسال گراف</button>
+		            </div>
+				</form>
+            </div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+{% endblock %}
+
+
+
+
+
+
+
