@@ -69,6 +69,7 @@ body > nav.stiky > .left ul li a{
 }
 nav .right {
     display: flex;
+    height: 45px;
 }
 nav .right  > a{
     text-decoration: none;
@@ -91,10 +92,10 @@ nav .right  > a .img{
 }
 nav .right  > a .img > i{
     font-size: 30px;
-    margin-right: 15px; 
+    margin-right: 15px;
     color: #fff;
 }
-nav.stiky .right  > a .img > i{ 
+nav.stiky .right  > a .img > i{
     color: #000;
 }
 header{
@@ -105,6 +106,7 @@ header{
     justify-content: center;
     position: relative;
     background: repeating-linear-gradient(324deg, #161414, #1e1d1d 100px);
+    text-align: center;
 }
 header > .bg2 {
     position: absolute;
@@ -144,7 +146,7 @@ header > p{
     box-shadow: 10px 10px 50px rgba(0, 0, 0, .25);
 }
 .articles-wrapper > h1{
-    font-size: 35px;
+    font-size: 24px;
 }
 .article-wrapper{
     margin: 25px 0;
@@ -169,7 +171,7 @@ header > p{
     background-position: center;
 }
 .article-wrapper  > .right{
-    padding: 70px 20px 0 20px;
+    padding: 20px 20px 0 20px;
     height: 100%;
     margin-top: -55px;
 }
@@ -179,6 +181,7 @@ header > p{
 .article-wrapper  > .right .description{
     color: #595959;
     text-align: justify;
+    line-height: 28px;
 }
 p{
     text-align: justify !important;
@@ -242,135 +245,6 @@ footer ul li.youtube a{
 }
 footer ul li.telegram a{
     color: #00b3ed;
-
-}
-/* ------------------------------------------ now make is responsive ------------------------------------------------ */
-@media (max-width:991px){
-    nav{
-        background-color: #fff !important;
-        align-items: flex-start !important;
-        height: 100px !important;
-        overflow: hidden;
-        transition: height 0.5s !important;
-        padding: 0px 15px !important;
-        padding-right: 5  !important;
-        padding-top: 25px !important;
-    }
-    nav .right  > a .img > i{
-        color: #000;
-    }
-    nav.active{
-        height: var(--my-height) !important;
-    }
-    nav .right{
-        position: absolute;
-        top: 20px;
-        right: 15px;
-    }
-    nav .right a .name{
-        color: #000 ;
-    }
-    .profile {
-        margin-right: -50px !important;
-    }
-    .profile > span {
-        color: #000;
-    }
-    nav > .left{
-        align-items: flex-end;
-        width: 100% !important;
-    }
-    nav > .left > .btn{
-        display: block !important;
-        position: relative !important;
-        z-index: 20000000 !important;
-    }
-    nav .left ul{
-        flex-direction: column;
-        margin-top: 30px ;
-        text-align: left;
-        width: 100% ;
-    }
-    nav .left ul li{
-        width: 100%;
-    }
-    nav .left ul li a {
-        display: inline-block;
-        color: #000 !important;
-        width: 100% !important;
-        transition: all 0.5s;
-    }
-    nav .left ul li a:hover{
-        background-color: #0095ff;
-        color: #fff !important;
-    }
-    .main-body{
-        padding: 30px 150px;
-    }
-    .articles-wrapper{
-        width: 500px;
-    }
-    .article-wrapper{
-        flex-direction: column !important;
-        width: 450px;
-        height: initial;
-        border: solid #eee 1px !important;
-        padding-bottom: 0px;
-        padding-bottom: 20px;
-    }
-    .article-wrapper .left{
-        width: 100%;
-    }
-    .article-wrapper .left .img{
-        width: 100%;
-    }
-    .article-wrapper > .right{
-        margin-top: 0px;
-    }
-    .article-wrapper > .right a h1.title{
-        height: 60px !important;
-        display: flex;
-    }
-    li:nth-child(2){
-        margin-top: 60px;
-    }
-    li:last-child{
-        margin-bottom: 60px;
-    }
-}
-@media (max-width: 500px){
-    body nav{
-        height: 80px !important;
-    }
-    header{
-        padding: 0 30px;
-    }
-    .title {
-        font-size: 45px;
-    }
-    nav .right > a .img{
-        width: 50px;
-        height: 50px;
-    }
-    nav .right > a{
-        font-size: 16px;
-    }
-    body > nav .left .btn{
-        font-size: 13px;
-        margin-top: -5px;
-    }
-    .article-wrapper{
-        width: 350px;
-    }
-    .articles-wrapper{
-        width: 350px !important;
-    }
-    .articles-wrapper h1.title {
-        font-size: 30px;
-    }
-    footer{
-        height: 100px;
-    }
 }
 /*-------------- ------------*/
 .wrapper{
@@ -447,7 +321,186 @@ footer ul li.telegram a{
     background-size: cover;
     background-position: center;
 }
-/*.star-ratings {
-    margin-top: -176px;
-    margin-right: 10px;
-}*/
+h1.title {
+    display: flex;
+    align-items: center;
+}
+/* ------------------------------------------ now make is responsive ------------------------------------------------ */
+@media (max-width:991px){
+    nav{
+        background-color: #fff !important;
+        align-items: flex-start !important;
+        height: 100px !important;
+        overflow: hidden;
+        transition: height 0.5s !important;
+        padding: 0px 15px !important;
+        padding-right: 5  !important;
+        padding-top: 25px !important;
+    }
+    nav .right  > a .img > i{
+        color: #000;
+    }
+    nav.active{
+        height: var(--my-height) !important;
+    }
+    nav .right{
+        position: absolute;
+        top: 20px;
+        right: 15px;
+    }
+    nav .right a .name{
+        color: #000 ;
+    }
+    .profile > span {
+        color: #000;
+    }
+    nav > .left{
+        align-items: flex-end;
+        width: 100% !important;
+    }
+    nav > .left > .btn{
+        display: block !important;
+        position: relative !important;
+        z-index: 20000000 !important;
+    }
+    nav .left ul{
+        flex-direction: column;
+        margin-top: 30px ;
+        text-align: left;
+        width: 100% ;
+    }
+    nav .left ul li{
+        width: 100%;
+    }
+    nav .left ul li a {
+        display: inline-block;
+        color: #000 !important;
+        width: 100% !important;
+        transition: all 0.5s;
+    }
+    nav .left ul li a:hover{
+        background-color: #0095ff;
+        color: #fff !important;
+    }
+    nav .right a{
+        color: #000 !important;
+    }
+    .main-body{
+        padding: 30px 150px;
+    }
+    .articles-wrapper{
+        width: 500px;
+    }
+    .article-wrapper{
+        flex-direction: column !important;
+        width: 450px;
+        height: initial;
+        border: solid #eee 1px !important;
+        padding-bottom: 0px;
+        padding-bottom: 20px;
+    }
+    .article-wrapper .left{
+        width: 100%;
+    }
+    .article-wrapper  > .right .description{
+        line-height: 24px;
+    }
+    .article-wrapper .left .img{
+        width: 100%;
+    }
+    .article-wrapper > .right{
+        margin-top: 0px;
+    }
+    .article-wrapper > .right a h1.title{
+        height: 60px !important;
+        display: flex;
+    }
+    nav .left ul li:nth-child(2){
+        margin-top: 60px;
+    }
+    nav .left ul li:last-child{
+        margin-bottom: 60px;
+    }
+    .star-ratings {
+        margin-top: -115px;
+        margin-right: 10px;
+    }
+    .wrapper{
+        height: 400px;
+    }
+    .line-wrapper{
+        align-items:center;
+        justify-content:center;
+    }
+    .wrapper .line{
+        width:30px;
+        margin: 2px;
+    }
+    .name-wrapper{
+        align-items:center;
+        justify-content:center;
+    }
+    .name-wrapper .name{
+        width:30px !important;
+        margin:2px !important;
+    }
+    .name-wrapper .name > p{
+        font-size: 10px;
+    }
+    div.line > p.text{
+        font-size: 10px;
+    }
+    .wrapper .line:after {
+        top: -16px;
+        width: 30px;
+        height: 30px;
+    }
+    .wrapper .line-wrapper > .line > .img {
+        width: 25px;
+        height: 25px;
+        margin-top: -19px;
+        left: 7.3px;
+    }
+    .hits {
+        margin: top;
+        padding-top: 15px;
+    }
+    .author-description{
+        padding: 25px 0;
+    }
+}
+
+@media (max-width: 500px){
+    body nav{
+        height: 80px !important;
+    }
+    header{
+        padding: 0 30px;
+    }
+    .title {
+        font-size: 45px;
+    }
+    nav .right > a .img{
+        width: 50px;
+        height: 50px;
+    }
+    nav .right > a{
+        font-size: 16px;
+    }
+    body > nav .left .btn{
+        font-size: 13px;
+        margin-top: -5px;
+    }
+    .article-wrapper{
+        width: 350px;
+    }
+    .articles-wrapper{
+        width: 350px !important;
+    }
+    .articles-wrapper h1.title {
+        font-size: 30px;
+    }
+    footer{
+        height: 100px;
+    }
+}

@@ -2,17 +2,18 @@
 {% load comment_tags %}
 {% load ratings %}
 {% load static %}
+{% load humanize %}
 {% block title %}{{object.title}}{% endblock %}
 {% block main %}
 	<!-- start the header section -->
 	<header style="background:none; display: flex !important;">
 		<div class="bg2" style="background-image: url({{object.thumbnail.url}});"></div>
 		<h1 class="title" style="font-size: 45px;">{{object.title}}</h1>
-		<div class="author-description" style="color: #fff;">نویسنده <a href="{%  url 'blog:author' object.user %}" style="color: #00b7ff; font-weight: bolder;">{{object.user.get_full_name}}</a> در <p class="time">{{object.publish}}</p></div>
+		<div class="author-description" style="color: #fff;">نویسنده <a href="{%  url 'blog:author' object.user %}" style="color: #00b7ff; font-weight: bolder;">{{object.user.get_full_name}}</a> در <p class="time">{{object.publish|naturaltime}}</p></div>
 		<div class="category" style="font-weight: bolder; margin: -30px auto 0px auto;">
 			{% for cate in article.category.Active %}
 				<a href="{% url 'blog:category' cate.slug %}" style="color: #fff;">#{{cate.title}}</a>
-			{% endfor %}	
+			{% endfor %}
 		</div>
 		<p style="margin-top: -15px;">{% ratings object %}</p>
 		<div class="hits" style="color:#fff; margin-top: -15px;">
@@ -23,6 +24,7 @@
 	<!-- start the main section -->
 	<div class="main-body">
 		<div class="articles-wrapper">
+		    {% if object.Graph  %}
 			<div class="wrapper">
 				<div class="line-wrapper">
 					<div class="line" style="--per: {{object.Graph.graph_number_1}};">
@@ -62,7 +64,7 @@
 						<div class="img" style="background-image: url({{object.Graph.graph_image_9.url}});"></div>
 					</div>
 					<div class="line" style="--per: {{object.Graph.graph_number_10}};">
-						<p class="text">{{object.Graph.graph_number_10}}</p>
+						<p class="text">{{object.Graph.title}}</p>
 						<div class="img" style="background-image: url({{object.Graph.graph_image_10.url}});"></div>
 					</div>
 				</div>
@@ -96,9 +98,10 @@
 					</div>
 					<div class="name">
 						<p>{{object.Graph.graph_name_10}}</p>
-					</div>					
+					</div>
 				</div>
 			</div>
+			{% endif %}
 			<div class="article-wrapper" style="height: initial !important;">
 				<div class="right">
 					<p class="description" style="text-align: justify !important;">
@@ -107,7 +110,7 @@
 					<div class="comment">
 						{% render_comments object request %}
 						{% include_bootstrap %}
-					</div>					
+					</div>
 				</div>
 			</div>
 		</div>

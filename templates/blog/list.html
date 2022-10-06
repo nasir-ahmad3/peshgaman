@@ -28,18 +28,18 @@
 						<a href="{% url 'blog:detail' article.slug %}">
 							<h1 class="title">{{article.title}}{% ratings article %}</h1>
 							<p class="description">
-								{{article.description|striptags|truncatewords:'30'}}
+								{{article.description|safe|striptags|truncatewords:'30'}}
 							</p>
 						</a>
-						<div class="author-description">نویسنده <a href="{% url 'blog:author' article.user %}">{{article.user.get_full_name}}</a> در <p class="time">{{article.publish|naturaltime}}</p></div>
+						<div class="author-description">نویسنده <a href="{% url 'blog:author' article.user.username %}">{{article.user.get_full_name}}</a> در <p class="time">{{article.publish|naturaltime}}</p></div>
 						<div class="category">
 							{% for cate in article.category.Active %}
 								<a href="{% url 'blog:category' cate.slug %}">#{{cate.title}}</a>
-							{% endfor %}	
-						</div>		
+							{% endfor %}
+						</div>
 						<div class="hits" style="color: #555; margin-right:5px;">
 							بازدید ها :{{article.hits.count}}
-						</div>	
+						</div>
 					</div>
 				</div>
 			{% empty %}
@@ -53,7 +53,7 @@
 					{% if page_obj.has_next %}
 						<a href="{% block next_page %}{% endblock %}">پوست های قدیمی</a>
 					{% endif %}
-				</div>		
+				</div>
 			{% endif %}
 		</div>
 		{% last_month_view  request %}

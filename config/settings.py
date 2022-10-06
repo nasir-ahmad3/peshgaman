@@ -1,3 +1,4 @@
+
 """
 Django settings for config project.
 
@@ -26,8 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['peshgaman.pythonanywhere.com']
 
 LOGIN_REDIRECT_URL = 'account:home'
 REDIRECT_URL = 'account:login'
@@ -131,11 +131,11 @@ MEDIA_ROOT = BASE_DIR/'media'
 
 
 STATIC_URL = 'static/'
-# STATIC_URL = BASE_DIR / '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+#STATICFILES_DIRS = [
+#    BASE_DIR / "static",
+#]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -145,7 +145,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 AUTH_USER_MODEL = 'account.User'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
